@@ -1,0 +1,71 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <title>Facelet Title</title>
+    </h:head>
+    <h:body>
+        
+        <h:form>
+            <h2>MANTENIMIENTO CLIENTE</h2>
+            <p:panelGrid columns="1">
+                <p:inputText value="#{clienteC.cm.NOMCLI}" placeholder="NOMBRE" required="true"/>                
+                <p:inputText value="#{clienteC.cm.APECLI}" placeholder="APELLIDO"/>
+                <p:inputText value="#{clienteC.cm.DNICLI}" maxlength="8" placeholder="DNI">
+                    <p:keyFilter regEx="/[\d]/"/>
+                </p:inputText>
+                <p:inputText value="#{clienteC.cm.NUMASI}" placeholder="NUMERO ASIENTO">
+                    <p:keyFilter regEx="/[\d]/"/>
+                </p:inputText>
+                <p:inputText value="#{clienteC.cm.ORIGEN}" placeholder="ORIGEN"/>
+                <p:inputText value="#{clienteC.cm.DESTINO}" placeholder="DESTINO"/>
+
+                <p:commandButton value="AGREGAR" actionListener="#{clienteC.agregar()}" update="table">
+                    <p:confirm header="Confirmation" message="Are you sure?" icon="ui-icon-alert" />
+                </p:commandButton>                
+
+                <p:confirmDialog global="true" showEffect="fade" hideEffect="fade">
+                    <p:commandButton value="SI" type="button" styleClass="ui-confirmdialog-yes" icon="ui-icon-check" />
+                    <p:commandButton value="NO" type="button" styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
+                </p:confirmDialog>
+                <br/>
+
+                <p:inputText value="#{clienteC.cm.CODCLI}" placeholder="CODIGO DE BORRADO"/>
+                <p:commandButton value="ELIMINAR" actionListener="#{clienteC.delete()}" update="table"/>
+                <br/>
+                <p:commandButton value="EDITAR" actionListener="#{clienteC.update()}" update="table"/>
+
+                <br/>
+                <p:dataTable value="#{clienteC.lstCliente}" var="cli" id="table">
+                    <p:column headerText="CODIGO">
+                        <p:outputLabel value="#{cli.CODCLI}"/>
+                    </p:column>
+                    <p:column headerText="NOMBRE">
+                        <p:outputLabel value="#{cli.NOMCLI}"/>
+                    </p:column>
+                    <p:column headerText="APELLIDO">
+                        <p:outputLabel value="#{cli.APECLI}"/>
+                    </p:column>
+                    <p:column headerText="DNI">
+                        <p:outputLabel value="#{cli.DNICLI}"/>
+                    </p:column>
+                    <p:column headerText="NUMERO ASIENTO">
+                        <p:outputLabel value="#{cli.NUMASI}"/>
+                    </p:column>
+                    <p:column headerText="ORIGEN">
+                        <p:outputLabel value="#{cli.ORIGEN}"/>
+                    </p:column>
+                    <p:column headerText="DESTINO">
+                        <p:outputLabel value="#{cli.DESTINO}"/>
+                    </p:column>
+                </p:dataTable>
+                <p:commandButton value="LISTAR" actionListener="#{clienteC.listar()}" update="table" />
+
+            </p:panelGrid>
+        </h:form>
+
+    </h:body>
+</html>
+
