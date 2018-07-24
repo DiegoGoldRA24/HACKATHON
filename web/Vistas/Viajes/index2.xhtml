@@ -12,18 +12,12 @@
             <h2>MANTENIMIENTO VIAJES</h2>
             <p:panelGrid columns="1">
                 <p:inputText value="#{viajeC.vm.CODCLI}" placeholder="CLIENTE" required="true"/>
-                <p:inputMask id="date" value="#{viajeC.vm.FECVIA}" mask="99/99/9999" placeholder="FECHA DE VIAJE"/>
-                <p:inputMask id="date" value="#{viajeC.vm.FECPOST}" mask="99/99/9999" placeholder="FECHA DE POSTERGACION"/>                
+                <p:inputMask value="#{viajeC.vm.FECVIA}" mask="99/99/9999" placeholder="FECHA DE VIAJE"/>
+                <p:inputMask value="#{viajeC.vm.FECPOST}" mask="99/99/9999" placeholder="FECHA DE POSTERGACION"/>                
                 <p:inputText value="#{viajeC.vm.COSTO}" placeholder="COSTO PASAJE"/>                
 
-                <p:commandButton value="AGREGAR" actionListener="#{viajeC.agregar()}" update="table">
-                    <p:confirm header="Confirmation" message="Are you sure?" icon="ui-icon-alert" />
-                </p:commandButton>                
+                <p:commandButton value="AGREGAR" actionListener="#{viajeC.agregar()}" update="table"/>
 
-                <p:confirmDialog global="true" showEffect="fade" hideEffect="fade">
-                    <p:commandButton value="SI" type="button" styleClass="ui-confirmdialog-yes" icon="ui-icon-check" />
-                    <p:commandButton value="NO" type="button" styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
-                </p:confirmDialog>
                 <br/>
 
                 <p:inputText value="#{viajeC.vm.CODVIA}" placeholder="CODIGO DE BORRADO"/>
